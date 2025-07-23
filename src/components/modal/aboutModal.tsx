@@ -53,9 +53,9 @@ export const AboutModal = () => {
           Source code & Tutorials:{' '}
           <Link
             className='text-blue-600 dark:text-blue-400'
-            href='https://www.github.com/jpwogaman/template.io'
+            href='https://www.github.com/wogamusic/template.io'
             target='_blank'>
-            https://www.github.com/jpwogaman/template.io
+            https://www.github.com/wogamusic/template.io
           </Link>
         </p>
       </div>
