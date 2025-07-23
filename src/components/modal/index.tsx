@@ -2,7 +2,7 @@
 // credit -> https://github.com/fireship-io/framer-demo/tree/framer-motion-demo/src
 
 import { type ReactNode } from 'react'
-import { LazyMotion } from 'motion/react'
+import { AnimationGeneratorType, LazyMotion } from 'motion/react'
 import * as m from 'motion/react-m'
 import { twMerge } from 'tailwind-merge'
 import { useModal } from '@/components/context'
@@ -44,7 +44,7 @@ const dropIn = {
     opacity: 1,
     transition: {
       duration: 0.1,
-      type: 'spring',
+      type: 'spring' as AnimationGeneratorType,
       damping: 25,
       stiffness: 500
     }
