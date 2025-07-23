@@ -2,7 +2,7 @@
 name = "template-io"
 version = "0.0.1"
 authors = ["JP Wogaman II"]
-repository = "https://github.com/jpwogaman/template.io"
+repository = "https://github.com/wogamusic/template.io"
 description = "Workflow enhancement for Open Stage Control, VEP, & Cubase."
 license = "MIT"
 edition = "2021"

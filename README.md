@@ -2,7 +2,7 @@
 
 <img src="./src-tauri/icons/icon.png" width="150">
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jpwogaman/template.io/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/wogamusic/template.io/blob/main/LICENSE)
 
 # Table of Contents
 
@@ -94,7 +94,7 @@ Requirements 1-3 are pulled from [**Tauri Prerequisites**](https://v2.tauri.app/
 In a command prompt or terminal, navigate to the directory where you would like to download the repository and run the following commands:
 
 1.  ```
-    git clone https://github.com/jpwogaman/template.io.git
+    git clone https://github.com/wogamusic/template.io.git
     ```
 2.  ```
     cd template.io
