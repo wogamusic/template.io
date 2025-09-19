@@ -80,6 +80,7 @@
 <ctrl><name>Toggle Upper Zone</name><stat>176</stat><chan>3</chan><addr>77</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Toggle Regions</name><stat>176</stat><chan>3</chan><addr>78</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Toggle Transport Zone</name><stat>176</stat><chan>3</chan><addr>79</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Render Audio Click Between Locators</name><stat>176</stat><chan>3</chan><addr>80</addr><max>127</max><flags>1</flags></ctrl>
 </ctrltable>
 <bank name="GR3-OSC1-CH4">
 <entry ctrl="Toggle Event Names">
@@ -318,6 +319,9 @@
 </entry>
 <entry ctrl="Toggle Transport Zone">
 <command><category>Window Zones</category><action>Show/Hide Transport Zone</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Render Audio Click Between Locators">
+<command><category>Edit</category><action>Create Audio Click Track</action><flags>1</flags></command>
 </entry>
 </bank>
 </remotedescription>
