@@ -1,5 +1,6 @@
 'use client'
-import React, { use, useCallback, useLayoutEffect, type FC } from 'react'
+
+import React, { useCallback, useLayoutEffect, type FC } from 'react'
 import { HiOutlineLockClosed, HiOutlineLockOpen } from 'react-icons/hi2'
 import { FaArrowDown19 } from 'react-icons/fa6'
 import { twMerge } from 'tailwind-merge'
