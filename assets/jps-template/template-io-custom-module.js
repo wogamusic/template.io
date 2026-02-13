@@ -2,7 +2,7 @@
 /// <reference path="./custom-module.d.ts" />
 
 /** @type {import("@/../../src/components/backendCommands/backendCommands").FullTrackListForExport} */
-const allTrack_jsn = loadJSON('tracks-10.21.2025.json')
+const allTrack_jsn = loadJSON('tracks-02.03.2026.json')
 
 const items = allTrack_jsn.items
 
@@ -408,6 +408,9 @@ module.exports = {
 
         if (art.art_layers_on !== '[]') {
           const layersOnFiltered = art.art_layers_on.replace('"",', '')
+          /**
+           * @type {Array<`T_${number}_AL_${number}`>}
+           * */
           const obj = JSON.parse(layersOnFiltered)
           const layersOnFilteredObj = obj.map((item) => {
             const layer = {
@@ -428,6 +431,9 @@ module.exports = {
         }
         if (art.art_layers_off !== '[]') {
           const layersOffFiltered = art.art_layers_off.replace('"",', '')
+          /**
+           * @type {Array<`T_${number}_AL_${number}`>}
+           * */
           const obj = JSON.parse(layersOffFiltered)
           const layersOffFilteredObj = obj.map((item) => {
             const layer = {

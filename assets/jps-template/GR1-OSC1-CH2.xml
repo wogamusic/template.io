@@ -57,10 +57,10 @@
 <command><category>Edit</category><action>Project Logical Editor</action><flags>1</flags></command>
 </entry>
 <entry ctrl="A5X + SUB8">
-<value><device>VST Control Room</device><chan>-1</chan><tag>16399</tag><flags>1</flags></value>
+<value><device>VST Control Room</device><chan>-1</chan><tag>16402</tag><flags>1</flags></value>
 </entry>
 <entry ctrl="DT 770's">
-<value><device>VST Control Room</device><chan>-1</chan><tag>16400</tag><flags>1</flags></value>
+<value><device>VST Control Room</device><chan>-1</chan><tag>16403</tag><flags>1</flags></value>
 </entry>
 <entry ctrl="Auto Fades Settings">
 <command><category>Project</category><action>Auto Fades Settings</action><flags>1</flags></command>

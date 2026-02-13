@@ -25,12 +25,12 @@ import {
   type contextMenuType,
   type FileItemId,
   type SubItemId,
-  SelectValuesKeys
+  type SelectValuesKeys
 } from '@/components/context'
 import { ScrollToSelectedItemButton } from './scrollToSelectedItemButton'
 import {
-  FileItem,
-  FullTrackWithCounts
+  type FileItem,
+  type FullTrackWithCounts
 } from '../backendCommands/backendCommands'
 
 export const TrackList: FC = () => {
@@ -39,20 +39,19 @@ export const TrackList: FC = () => {
   const { settings, updateSettings } = useSelectedItem()
   const { selected_item_id } = settings
 
-  const onChangeHelper = ({
-    newValue,
-    layoutDataSingleId: id,
-    key
-  }: OnChangeHelperArgsType) => {
-    const refetch = false
-    update.track(
-      {
-        id: id as FileItemId,
-        [key]: newValue
-      },
-      refetch
-    )
-  }
+  const onChangeHelper = useCallback(
+    ({ newValue, layoutDataSingleId: id, key }: OnChangeHelperArgsType) => {
+      const refetch = false
+      update.track(
+        {
+          id: id as FileItemId,
+          [key]: newValue
+        },
+        refetch
+      )
+    },
+    [update]
+  )
 
   type getInputPropsHelperType = {
     item: FullTrackWithCounts
