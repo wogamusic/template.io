@@ -30,6 +30,7 @@ import {
   useMutations,
   useSelectedItem,
   useContextMenu,
+  useModal,
   type contextMenuType,
   type SubItemId
 } from '@/components/context'
@@ -50,6 +51,7 @@ export const TrackOptions: FC = () => {
   const { selectedItem, update } = useMutations()
   const { settings, updateSettings } = useSelectedItem()
   const { selected_sub_item_id, track_options_layouts } = settings
+  const { open, setPolyHelpProps, setModalType, modalOpen, close } = useModal()
 
   //////////////////////////////////////////
   const cardTableLayoutsHelper = (
@@ -450,6 +452,29 @@ export const TrackOptions: FC = () => {
         title={`Track Id: ${selectedItem?.id} - Track Name: ${selectedItem?.name}`}
         className='pt-4 pb-2 text-3xl'>{`Track Name: ${selectedItem?.name}`}</h1>
 
+      <h2 className='flex items-center gap-2 px-2 pb-2 text-sm'>
+        {`Track Id: ${selectedItem?.id}`}{' '}
+        <span
+          tabIndex={0}
+          className={twMerge(
+            'font-codeItalic cursor-pointer items-center rounded-sm px-0 py-0 text-sm text-indigo-300 underline',
+            'outline-hidden focus-visible:text-white focus-visible:ring-4 focus-visible:ring-indigo-500 focus-visible:outline-hidden'
+          )}
+          onClick={() => {
+            if (modalOpen) {
+              close()
+            } else {
+              setModalType('polyHelp')
+              setPolyHelpProps({
+                name: selectedItem?.name ?? '',
+                id: selectedItem?.id ?? 'T_0'
+              })
+              open()
+            }
+          }}>
+          (Cubase Transformer Setup)
+        </span>
+      </h2>
       <div className='flex items-center text-sm'>
         <h2 className='px-2'>Sampler:</h2>
         <div className='w-1/2'>

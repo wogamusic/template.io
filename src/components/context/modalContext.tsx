@@ -13,6 +13,8 @@ import {
   useState
 } from 'react'
 
+import { type FileItemId } from '@/components/context/selectedItemContext'
+
 interface ModalMessage {
   loadingMessage: string
   successMessage: string
@@ -21,15 +23,20 @@ interface ModalMessage {
 
 type status = 'success' | 'error' | null
 
-interface ModalContextType {
+export interface ModalContextType {
   modalOpen: boolean
   modalMessage: ModalMessage
-  modalType: 'about' | 'settings'
+  modalType: 'about' | 'settings' | 'polyHelp'
+  polyHelpProps: {
+    name: string
+    id: FileItemId
+  }
   loading: boolean
   status: status
   close: () => void
   open: () => void
-  setModalType: Dispatch<SetStateAction<'about' | 'settings'>>
+  setModalType: Dispatch<SetStateAction<'about' | 'settings' | 'polyHelp'>>
+  setPolyHelpProps: Dispatch<SetStateAction<{ name: string; id: FileItemId }>>
   setModalMessage: Dispatch<SetStateAction<ModalMessage>>
   setLoading: Dispatch<SetStateAction<boolean>>
   setStatus: Dispatch<SetStateAction<status>>
@@ -43,6 +50,10 @@ const modalContextDefaultValues: ModalContextType = {
     errorMessage: ''
   },
   modalType: 'about',
+  polyHelpProps: {
+    name: '',
+    id: 'T_0'
+  },
   loading: false,
   status: null,
   close: () => undefined,
@@ -50,7 +61,8 @@ const modalContextDefaultValues: ModalContextType = {
   setModalType: () => undefined,
   setModalMessage: () => undefined,
   setLoading: () => undefined,
-  setStatus: () => undefined
+  setStatus: () => undefined,
+  setPolyHelpProps: () => undefined
 }
 
 export const ModalContext = createContext<ModalContextType>(
@@ -68,7 +80,16 @@ export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
     successMessage: '',
     errorMessage: ''
   })
-  const [modalType, setModalType] = useState<'about' | 'settings'>('about')
+  const [modalType, setModalType] = useState<'about' | 'settings' | 'polyHelp'>(
+    'about'
+  )
+  const [polyHelpProps, setPolyHelpProps] = useState<{
+    name: string
+    id: FileItemId
+  }>({
+    name: '',
+    id: 'T_0'
+  })
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState<status>(null)
 
@@ -112,6 +133,8 @@ export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
       setStatus,
       modalMessage,
       modalType,
+      polyHelpProps,
+      setPolyHelpProps,
       setModalType,
       setModalMessage
     }),
@@ -125,6 +148,8 @@ export const ModalProvider: FC<ModalProviderProps> = ({ children }) => {
       setStatus,
       modalMessage,
       modalType,
+      polyHelpProps,
+      setPolyHelpProps,
       setModalType,
       setModalMessage
     ]

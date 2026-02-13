@@ -2,7 +2,7 @@
 
 import { type ChangeEvent, Fragment } from 'react'
 import {
-  SelectValuesKeys,
+  type SelectValuesKeys,
   useSelectArraysContext,
   useSelectedItem
 } from '@/components/context'
@@ -11,8 +11,7 @@ import { twMerge } from 'tailwind-merge'
 
 export const SettingsModal = () => {
   const { settings, updateSettings } = useSelectedItem()
-  const { getSelectList, getInputList, setSelectValues } =
-    useSelectArraysContext()
+  const { getSelectList, getInputList } = useSelectArraysContext()
 
   type SettingsMenuOptions = Record<
     string,

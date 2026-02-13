@@ -2,12 +2,13 @@
 // credit -> https://github.com/fireship-io/framer-demo/tree/framer-motion-demo/src
 
 import { type ReactNode } from 'react'
-import { AnimationGeneratorType, LazyMotion } from 'motion/react'
+import { type AnimationGeneratorType, LazyMotion } from 'motion/react'
 import * as m from 'motion/react-m'
 import { twMerge } from 'tailwind-merge'
 import { useModal } from '@/components/context'
 import { SettingsModal } from '@/components/modal/settingsModal'
 import { AboutModal } from '@/components/modal/aboutModal'
+import { PolyHelpModal } from '@/components/modal/polyHelpModal'
 
 const loadFeatures = () =>
   import('@/components/layout/motionFeatures').then((res) => res.default)
@@ -74,6 +75,7 @@ export const Modal = () => {
           <div className='h-full w-full py-12'>
             {modalType === 'about' && <AboutModal />}
             {modalType === 'settings' && <SettingsModal />}
+            {modalType === 'polyHelp' && <PolyHelpModal />}
           </div>
 
           <button
