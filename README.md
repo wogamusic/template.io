@@ -336,7 +336,10 @@ Template.io imports and exports JSON files with this schema (TBD).
 1. /assets/for-osc/**template-io-workfile.json**
 2. /assets/for-osc/**template-io-custom-module.js**
 3. /assets/for-cubase/**template-io-generic-remote.xml**
-4. /assets/for-cubase/**template-io-empty-tracks.cpr**
+4a. /assets/for-cubase/**template-io-empty-tracks-12.cpr**
+4b. /assets/for-cubase/**template-io-empty-tracks-12.xml**
+4c. /assets/for-cubase/**template-io-empty-tracks-15.cpr**
+4d. /assets/for-cubase/**template-io-empty-tracks-15.xml**
 
 ## 2. Follow the Instructions Above to Download and Setup Template.io
 
@@ -516,7 +519,7 @@ This is how it maps to the Template.io:
 
 ## 6. Setup Cubase
 
-> **⚠️ Note: Template.io was built around Cubase version 11 and 12, it has not been tested on any of the later versions**
+> **⚠️ Note: Template.io was built around Cubase version 11 and 12, and has recently been tested on version 15. It has not been tested on 13 or 14.**
 
 ### 1. Assign MIDI ports
 
@@ -584,6 +587,10 @@ Create empty MIDI tracks and start naming and routing them as you would normally
 
 ![transformer target](./assets/Images/cubase-transformer-target.png)
 
+> **⚠️ Note: that in Cubase Version 12, the parameters in this transformer are called "Value 1" and "Value 2", but in Cubase 15, they are called "Subtype" and "Main Value". If you create a preset or template in Cubase 12, the transformer will NOT work in Cubase 15. Solved below in *[Bonus! Empty Tracks](#3-bonus-empty-tracks)***
+
+![transformer parameters](./assets/Images/cubase-transformer-v12-versus-v15.png)
+
 This will receive the signal that Open Stage Control just sent (in response to the signal Cubase sent when the track was selected) and return a `Polyphonic Key Pressure signal on port OSC3` that is completely unique to every track.
 
 This number is calculated in the Custom Module like so:
@@ -615,9 +622,11 @@ if (!track || trkNumb !== parseInt(track.id.split('_')[1])) {
 
 ### 3. Bonus! Empty Tracks
 
-I know adding transformers on each track seems like a hassle, so I took the liberty of setting up these transformers on **384** empty MIDI tracks so you wouldn't have to! These tracks are available in the **template-io-empty-tracks.cpr** file and are all disabled for you to activate anytime you wish to add a new instrument. I recommend you import these into your template, or use the file to start a new one.
+I know adding transformers on each track seems like a hassle, so I took the liberty of setting up these transformers on **2175** empty MIDI tracks so you wouldn't have to! These tracks are available in the **template-io-empty-tracks-12.cpr** and **template-io-empty-tracks-15.cpr**, as well as in **template-io-empty-tracks-12.xml** and **template-io-empty-tracks-15.xml** files and are all disabled for you to activate anytime you wish to add a new instrument. I recommend you import these into your template, or use the file to start a new one. I have them grouped in sets of 128, to match the way the `trkNumb` is calculated in the custom module.
 
-![transformer setup](./assets/Images/cubase-transformer.png)
+> **⚠️ Note: you cannot use the same file for both Cubase 12 and Cubase 15, as the transformer parameters changed names from "Value 1" and "Value 2" in Cubase 12 to "Subtype" and "Main Value" in Cubase 15, so make sure to use the correct file for your version of Cubase.**
+
+![cubase empty tracks](./assets/Images/cubase-empty-v15.png)
 
 ## 8. Custom Module in Action
 
@@ -633,7 +642,9 @@ Great! Now every time we select a track, Open Stage Control will populate the co
 
 ![custom module in action](./assets/Images/custom-module-in-action.gif)
 
-## 9. Full Example Using VEP
+> **⚠️ under construction**
+
+## 9. Full Example Using VEP 
 
 ### Part 1. Gather Track Information
 
