@@ -8,6 +8,7 @@ import {
 } from '@/components/context'
 import { type Settings } from '@/components/backendCommands/backendCommands'
 import { twMerge } from 'tailwind-merge'
+import { HiOutlinePlus } from 'react-icons/hi2'
 
 export const SettingsModal = () => {
   const { settings, updateSettings } = useSelectedItem()
@@ -22,6 +23,7 @@ export const SettingsModal = () => {
           label: string
           input: string
           max?: number
+          min?: number
           selectList?: SelectValuesKeys
         }
       >
@@ -66,6 +68,52 @@ export const SettingsModal = () => {
         label: 'Default Number of Faders for a New Track',
         input: 'number',
         max: 10
+      }
+    },
+    codes: {
+      default_art_tog_code_type: {
+        label: 'Default Code Type for Toggle Articulations',
+        input: 'select',
+        selectList: 'valAddrList'
+      },
+      default_art_tog_code: {
+        label: 'Default Code for Toggle Articulations',
+        input: 'number',
+        max: 127,
+        min: 0
+      },
+      default_art_tap_code_type: {
+        label: 'Default Code Type for Tap Articulations',
+        input: 'select',
+        selectList: 'valAddrList'
+      },
+      default_art_tap_code: {
+        label: 'Default Code for Tap Articulations',
+        input: 'number',
+        max: 127,
+        min: 0
+      },
+      default_art_layer_code_type: {
+        label: 'Default Code Type for Articulation Layers',
+        input: 'select',
+        selectList: 'valAddrList'
+      },
+      default_art_layer_code: {
+        label: 'Default Code for Articulation Layers',
+        input: 'number',
+        max: 127,
+        min: 0
+      },
+      default_fad_code_type: {
+        label: 'Default Code Type for Faders',
+        input: 'select',
+        selectList: 'valAddrList'
+      },
+      default_fad_code: {
+        label: 'Default Code for Faders',
+        input: 'number',
+        max: 127,
+        min: 0
       }
     },
     additions: {
@@ -114,19 +162,20 @@ export const SettingsModal = () => {
               {(Object.entries(item) as subItemMap).map(([subKey, subItem]) => {
                 if (!subItem) return null
 
-                const { label, input, max, selectList } = subItem
+                const { label, input, max, min, selectList } = subItem
 
                 return (
                   <div
                     key={subKey}
                     className='flex w-full items-center text-sm'>
                     <label className='mr-4 whitespace-nowrap'>{`${label}:`}</label>
+
                     {input === 'number' && (
                       <input
                         type='number'
                         id={subKey}
                         max={max}
-                        min={1}
+                        min={min ?? 1}
                         title={
                           subKey +
                           '_currentValue: ' +
@@ -144,7 +193,7 @@ export const SettingsModal = () => {
                           })
                         }}
                         className={twMerge(
-                          'h-full w-[60px]',
+                          'h-full w-15',
                           'hover:cursor-text',
                           'rounded-xs bg-inherit p-1 outline-hidden',
                           'focus-visible:cursor-text focus-visible:bg-white focus-visible:text-zinc-900 focus-visible:placeholder-zinc-500 focus-visible:ring-4 focus-visible:ring-indigo-600 focus-visible:outline-hidden'
@@ -179,9 +228,19 @@ export const SettingsModal = () => {
                       </select>
                     )}
                     {input === 'list' && selectList && (
-                      <div className='mb-2 flex max-h-24 w-full flex-col overflow-y-scroll border-b border-zinc-600'>
-                        <div className='py-2'>{getInputList(selectList)}</div>
-                      </div>
+                      <>
+                        <div className='mb-2 flex max-h-24 w-1/2 flex-col overflow-y-scroll border-b border-zinc-600'>
+                          <div className='py-2'>{getInputList(selectList)}</div>
+                        </div>
+
+                        <button
+                          className='ml-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xs border bg-inherit p-1'
+                          onClick={() => {
+                            console.log('test')
+                          }}>
+                          <HiOutlinePlus className='h-4 w-4' />
+                        </button>
+                      </>
                     )}
                   </div>
                 )

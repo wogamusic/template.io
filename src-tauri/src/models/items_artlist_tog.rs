@@ -1,4 +1,4 @@
-use crate::{ schema::items_artlist_tog, models::fileitem::FileItem };
+use crate::{ schema::items_artlist_tog, models::fileitem::FileItem, services::{  settings_services::{ Settings },} };
 use diesel::{
   Insertable,
   Queryable,
@@ -110,8 +110,8 @@ pub fn init_art_tog(
     id: format!("{}_AT_{}", fileitems_item_id, new_art_tog_id),
     name: "".to_string(),
     toggle: true,
-    code_type: "/control".to_string(),
-    code: 0,
+    code_type: Settings::get().default_art_tog_code_type.clone(),
+    code: Settings::get().default_art_tog_code,
     on: 127,
     off: 0,
     default: "On".to_string(),

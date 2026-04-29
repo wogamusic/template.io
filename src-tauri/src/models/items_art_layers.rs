@@ -1,4 +1,4 @@
-use crate::{ schema::items_art_layers, models::fileitem::FileItem };
+use crate::{ schema::items_art_layers, models::fileitem::FileItem , services::{  settings_services::{ Settings },} };
 use diesel::{
   Insertable,
   Queryable,
@@ -74,8 +74,8 @@ pub fn init_art_layer(
   ItemsArtLayers {
     id: format!("{}_AL_{}", fileitems_item_id, new_layer_id),
     name: "".to_string(),
-    code_type: "/control".to_string(),
-    code: 0,
+    code_type: Settings::get().default_art_layer_code_type.clone(),
+    code: Settings::get().default_art_layer_code,
     on: 127,    
     fileitems_item_id: fileitems_item_id,
   }

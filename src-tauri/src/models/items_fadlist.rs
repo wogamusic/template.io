@@ -1,4 +1,4 @@
-use crate::{ schema::items_fadlist, models::fileitem::FileItem };
+use crate::{ schema::items_fadlist, models::fileitem::FileItem, services::{  settings_services::{ Settings },} };
 use diesel::{
   Insertable,
   Queryable,
@@ -77,8 +77,8 @@ pub fn init_fad(fileitems_item_id: String, new_fad_id: String) -> ItemsFadList {
   ItemsFadList {
     id: format!("{}_FL_{}", fileitems_item_id, new_fad_id),
     name: "".to_string(),
-    code_type: "/control".to_string(),
-    code: 0,
+    code_type: Settings::get().default_fad_code_type.clone(),
+    code: Settings::get().default_fad_code,
     default: 0,
     change_type: "Value 2".to_string(),
     fileitems_item_id: fileitems_item_id,
