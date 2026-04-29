@@ -273,7 +273,7 @@ export const InputSelectMultiple: FC<InputComponentProps> = ({
             return (
               <div
                 key={`${value}_${index}`}
-                className='relative w-1/3 max-w-1/3 grow-1 p-0.5'>
+                className='relative w-1/3 max-w-1/3 grow p-0.5'>
                 <button
                   type='button'
                   tabIndex={0}
@@ -602,16 +602,23 @@ export const InputSelectMultiple: FC<InputComponentProps> = ({
         )}>
         {options === 'artRngsArray' && (
           <p>
-            {activeValuesTapLayersOrBothRanges.size > 0 &&
+            {activeValuesTapLayersOrBothRanges.size > 1 &&
               !tapLayersOrBothRangesIsOnlyEmpty() &&
               `(x${activeTapLayersOrBothRangesMinusEmpty()})`}
+            {activeValuesTapLayersOrBothRanges.size === 1 &&
+              !tapLayersOrBothRangesIsOnlyEmpty() &&
+              `(FR_${Array.from(activeValuesTapLayersOrBothRanges)[0]?.split('FR_')[1]})`}
           </p>
         )}
         {options === 'artLayersArray' && !multiSelectTog && (
           <p>
-            {activeValuesTapLayersOrBothRanges.size > 0 &&
+            {activeValuesTapLayersOrBothRanges.size > 1 &&
               !tapLayersOrBothRangesIsOnlyEmpty() &&
               `(x${activeTapLayersOrBothRangesMinusEmpty()})`}
+            {activeValuesTapLayersOrBothRanges.size === 1 &&
+              !tapLayersOrBothRangesIsOnlyEmpty() &&
+              `(AL_${Array.from(activeValuesTapLayersOrBothRanges)[0]?.split('AL_')[1]})`}
+
             {tapLayersTogether ? '*' : ''}
           </p>
         )}

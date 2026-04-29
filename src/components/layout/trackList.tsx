@@ -208,20 +208,20 @@ export const TrackList: FC = () => {
                   }
 
                   setIsContextMenuOpen(true)
-                  setContextMenuId(id as contextMenuType)
+                  setContextMenuId(id)
                 }}
                 onKeyUpCapture={() => {
                   void updateSettings({ key: 'selected_item_id', value: id })
                   void updateSettings({
                     key: 'selected_sub_item_id',
-                    value: (id + '_notes') as SubItemId
+                    value: (id + '_notes')
                   })
                 }}
                 onClick={() => {
                   void updateSettings({ key: 'selected_item_id', value: id })
                   void updateSettings({
                     key: 'selected_sub_item_id',
-                    value: (id + '_notes') as SubItemId
+                    value: id + '_notes'
                   })
                 }}
                 className={twMerge(
