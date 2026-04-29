@@ -592,195 +592,95 @@ export const TrackOptions: FC = () => {
                 )}
               </button>
             </div>
-            {table && (
-              <table
-                id={'table_' + layoutConfig.label}
-                className='w-full table-fixed border-separate border-spacing-0 text-left text-xs'>
-                <thead>
-                  <tr>
-                    {layoutConfig.keys.map((key) => {
-                      if (!key.show) return
-                      return (
-                        <td
-                          key={key.key}
-                          title={key.key}
-                          className={twMerge(
-                            'font-codeBold dark:font-code z-50 border-[1.5px] border-zinc-100 border-b-transparent bg-zinc-200 p-1 dark:border-zinc-400 dark:bg-zinc-600',
-                            key.className ?? ''
-                          )}>
-                          {key.label}
-                        </td>
-                      )
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {layoutDataArray?.map((layoutDataSingle) => {
-                    const layoutDataSingleId = layoutDataSingle.id
-
-                    const selectedLocked =
-                      locked && selected_sub_item_id === layoutDataSingleId
-                    const selectedUnlocked =
-                      !locked && selected_sub_item_id === layoutDataSingleId
-                    const unselectedLocked =
-                      locked && selected_sub_item_id !== layoutDataSingleId
-                    const unselectedUnlocked =
-                      !locked && selected_sub_item_id !== layoutDataSingleId
-
-                    return (
-                      <tr
-                        onClick={() =>
-                          void updateSettings({
-                            key: 'selected_sub_item_id',
-                            value: layoutDataSingleId
-                          })
-                        }
-                        onKeyUpCapture={() =>
-                          void updateSettings({
-                            key: 'selected_sub_item_id',
-                            value: layoutDataSingleId
-                          })
-                        }
-                        onContextMenu={(e) => {
-                          const tapRangeLayerPickerPopUp =
-                            document.getElementById('tapRangeLayerPickerPopUp')
-                          if (
-                            tapRangeLayerPickerPopUp?.contains(e.target as Node)
-                          ) {
-                            return
-                          }
-                          setIsContextMenuOpen(true)
-                          setContextMenuId(
-                            layoutDataSingleId as contextMenuType
-                          )
-                        }}
-                        key={layoutDataSingleId}
-                        className={twMerge(
-                          selectedUnlocked
-                            ? 'bg-red-300 hover:bg-red-400 hover:text-zinc-50 dark:bg-red-600 dark:hover:bg-red-400 dark:hover:text-zinc-50'
-                            : selectedLocked
-                              ? 'bg-red-500 hover:bg-red-600 hover:text-zinc-50 dark:bg-red-800 dark:hover:bg-red-500 dark:hover:text-zinc-50'
-                              : unselectedLocked
-                                ? 'bg-zinc-200 hover:bg-zinc-500 hover:text-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-400 dark:hover:text-zinc-50'
-                                : unselectedUnlocked
-                                  ? 'bg-zinc-200 hover:bg-zinc-500 hover:text-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-400 dark:hover:text-zinc-50'
-                                  : ''
-                        )}>
-                        {layoutConfig.keys.map((subKey) => {
-                          if (!subKey.show) return
-
-                          const inputPropsHelper = getInputPropsHelper({
-                            layoutDataSingle,
-                            subKey,
-                            layoutConfig
-                          })
-                          return (
-                            <td
-                              key={subKey.key}
-                              title={layoutDataSingleId}>
-                              {!subKey.input && subKey.key === 'id' && (
-                                <p
-                                  id={`${layoutDataSingle.id}_${subKey.key}`}
-                                  title={layoutDataSingle.id}
-                                  className='cursor-default p-1 transition-all duration-200'>
-                                  {`${layoutDataSingle.id.split('_')[2]}_${parseInt(layoutDataSingle.id.split('_')[3]!)}`}
-                                </p>
-                              )}
-                              {subKey.input === 'select-multiple' && (
-                                <InputSelectMultiple {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'select' && (
-                                <InputSelectSingle {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'checkbox-switch' && (
-                                <InputCheckBoxSwitch {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'checkbox' && (
-                                <InputCheckBox {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'color-picker' && (
-                                <InputColorPicker {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'text' && (
-                                <InputText {...inputPropsHelper} />
-                              )}
-                              {subKey.input === 'text-rich' && (
-                                <InputTextRich {...inputPropsHelper} />
-                              )}
-                            </td>
-                          )
-                        })}
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            )}
-            {!table && (
-              <div
-                id={'card_' + layoutConfig.label}
-                className='flex gap-1 overflow-x-scroll'>
-                {layoutDataArray?.map((layoutDataSingle) => {
-                  const layoutDataSingleId = layoutDataSingle.id
-                  return (
-                    <table
-                      onClick={() =>
-                        void updateSettings({
-                          key: 'selected_sub_item_id',
-                          value: layoutDataSingleId
-                        })
-                      }
-                      onKeyUpCapture={() =>
-                        void updateSettings({
-                          key: 'selected_sub_item_id',
-                          value: layoutDataSingleId
-                        })
-                      }
-                      onContextMenu={(e) => {
-                        const tapRangeLayerPickerPopUp =
-                          document.getElementById('tapRangeLayerPickerPopUp')
-                        if (
-                          tapRangeLayerPickerPopUp?.contains(e.target as Node)
-                        ) {
-                          return
-                        }
-                        setIsContextMenuOpen(true)
-                        setContextMenuId(layoutDataSingleId as contextMenuType)
-                      }}
-                      key={layoutDataSingleId}
-                      className='w-max table-auto border-separate border-spacing-0 text-left text-xs'>
-                      <thead>
-                        <tr>
+            {
+              table && (
+                <table
+                  id={'table_' + layoutConfig.label}
+                  className='w-full table-fixed border-separate border-spacing-0 text-left text-xs'>
+                  <thead>
+                    <tr>
+                      {layoutConfig.keys.map((key) => {
+                        if (!key.show) return
+                        return (
                           <td
+                            key={key.key}
+                            title={key.key}
                             className={twMerge(
                               'font-codeBold dark:font-code z-50 border-[1.5px] border-zinc-100 border-b-transparent bg-zinc-200 p-1 dark:border-zinc-400 dark:bg-zinc-600',
-                              'w-1/2 border-r-0'
+                              key.className ?? ''
                             )}>
-                            {layoutDataSingleId}
+                            {key.label}
                           </td>
-                          <td
-                            className={twMerge(
-                              'font-codeBold dark:font-code z-50 border-[1.5px] border-zinc-100 border-b-transparent bg-zinc-200 p-1 dark:border-zinc-400 dark:bg-zinc-600',
-                              'w-1/2 border-l-0'
-                            )}
-                          />
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {layoutConfig.keys.map((subKey) => {
-                          if (!subKey.show) return
+                        )
+                      })}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {layoutDataArray?.map((layoutDataSingle) => {
+                      const layoutDataSingleId = layoutDataSingle.id
 
-                          const inputPropsHelper = getInputPropsHelper({
-                            layoutDataSingle,
-                            subKey,
-                            layoutConfig
-                          })
-                          return (
-                            <tr
-                              key={subKey.key}
-                              className='bg-zinc-300 dark:bg-zinc-600'>
-                              <td className={'p-0.5'}>{subKey.label}</td>
-                              <td className={'p-0.5'}>
+                      const selectedLocked =
+                        locked && selected_sub_item_id === layoutDataSingleId
+                      const selectedUnlocked =
+                        !locked && selected_sub_item_id === layoutDataSingleId
+                      const unselectedLocked =
+                        locked && selected_sub_item_id !== layoutDataSingleId
+                      const unselectedUnlocked =
+                        !locked && selected_sub_item_id !== layoutDataSingleId
+
+                      return (
+                        <tr
+                          onClick={() =>
+                            void updateSettings({
+                              key: 'selected_sub_item_id',
+                              value: layoutDataSingleId
+                            })
+                          }
+                          onKeyUpCapture={() =>
+                            void updateSettings({
+                              key: 'selected_sub_item_id',
+                              value: layoutDataSingleId
+                            })
+                          }
+                          onContextMenu={(e) => {
+                            const tapRangeLayerPickerPopUp =
+                              document.getElementById(
+                                'tapRangeLayerPickerPopUp'
+                              )
+                            if (
+                              tapRangeLayerPickerPopUp?.contains(
+                                e.target as Node
+                              )
+                            ) {
+                              return
+                            }
+                            setIsContextMenuOpen(true)
+                            setContextMenuId(layoutDataSingleId)
+                          }}
+                          key={layoutDataSingleId}
+                          className={twMerge(
+                            selectedUnlocked
+                              ? 'bg-red-300 hover:bg-red-400 hover:text-zinc-50 dark:bg-red-600 dark:hover:bg-red-400 dark:hover:text-zinc-50'
+                              : selectedLocked
+                                ? 'bg-red-500 hover:bg-red-600 hover:text-zinc-50 dark:bg-red-800 dark:hover:bg-red-500 dark:hover:text-zinc-50'
+                                : unselectedLocked
+                                  ? 'bg-zinc-200 hover:bg-zinc-500 hover:text-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-400 dark:hover:text-zinc-50'
+                                  : unselectedUnlocked
+                                    ? 'bg-zinc-200 hover:bg-zinc-500 hover:text-zinc-50 dark:bg-zinc-600 dark:hover:bg-zinc-400 dark:hover:text-zinc-50'
+                                    : ''
+                          )}>
+                          {layoutConfig.keys.map((subKey) => {
+                            if (!subKey.show) return
+
+                            const inputPropsHelper = getInputPropsHelper({
+                              layoutDataSingle,
+                              subKey,
+                              layoutConfig
+                            })
+                            return (
+                              <td
+                                key={subKey.key}
+                                title={layoutDataSingleId}>
                                 {!subKey.input && subKey.key === 'id' && (
                                   <p
                                     id={`${layoutDataSingle.id}_${subKey.key}`}
@@ -811,15 +711,125 @@ export const TrackOptions: FC = () => {
                                   <InputTextRich {...inputPropsHelper} />
                                 )}
                               </td>
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                    </table>
-                  )
-                })}
-              </div>
-            )}
+                            )
+                          })}
+                        </tr>
+                      )
+                    })}
+                  </tbody>
+                </table>
+              )
+            }
+            {
+              !table && (
+                <div
+                  id={'card_' + layoutConfig.label}
+                  className='flex gap-1 overflow-x-scroll'>
+                  {layoutDataArray?.map((layoutDataSingle) => {
+                    const layoutDataSingleId = layoutDataSingle.id
+                    return (
+                      <table
+                        onClick={() =>
+                          void updateSettings({
+                            key: 'selected_sub_item_id',
+                            value: layoutDataSingleId
+                          })
+                        }
+                        onKeyUpCapture={() =>
+                          void updateSettings({
+                            key: 'selected_sub_item_id',
+                            value: layoutDataSingleId
+                          })
+                        }
+                        onContextMenu={(e) => {
+                          const tapRangeLayerPickerPopUp =
+                            document.getElementById('tapRangeLayerPickerPopUp')
+                          if (
+                            tapRangeLayerPickerPopUp?.contains(e.target as Node)
+                          ) {
+                            return
+                          }
+                          setIsContextMenuOpen(true)
+                          setContextMenuId(layoutDataSingleId)
+                        }}
+                        key={layoutDataSingleId}
+                        className='w-max table-auto border-separate border-spacing-0 text-left text-xs'>
+                        <thead>
+                          <tr>
+                            <td
+                              className={twMerge(
+                                'font-codeBold dark:font-code z-50 border-[1.5px] border-zinc-100 border-b-transparent bg-zinc-200 p-1 dark:border-zinc-400 dark:bg-zinc-600',
+                                'w-1/2 border-r-0'
+                              )}>
+                              {layoutDataSingleId}
+                            </td>
+                            <td
+                              className={twMerge(
+                                'font-codeBold dark:font-code z-50 border-[1.5px] border-zinc-100 border-b-transparent bg-zinc-200 p-1 dark:border-zinc-400 dark:bg-zinc-600',
+                                'w-1/2 border-l-0'
+                              )}
+                            />
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {layoutConfig.keys.map((subKey) => {
+                            if (!subKey.show) return
+
+                            const inputPropsHelper = getInputPropsHelper({
+                              layoutDataSingle,
+                              subKey,
+                              layoutConfig
+                            })
+                            return (
+                              <tr
+                                key={subKey.key}
+                                className='bg-zinc-300 dark:bg-zinc-600'>
+                                <td className={'p-0.5'}>{subKey.label}</td>
+                                <td className={'p-0.5'}>
+                                  {!subKey.input && subKey.key === 'id' && (
+                                    <p
+                                      id={`${layoutDataSingle.id}_${subKey.key}`}
+                                      title={layoutDataSingle.id}
+                                      className='cursor-default p-1 transition-all duration-200'>
+                                      {`${layoutDataSingle.id.split('_')[2]}_${parseInt(layoutDataSingle.id.split('_')[3]!)}`}
+                                    </p>
+                                  )}
+                                  {subKey.input === 'select-multiple' && (
+                                    <InputSelectMultiple
+                                      {...inputPropsHelper}
+                                    />
+                                  )}
+                                  {subKey.input === 'select' && (
+                                    <InputSelectSingle {...inputPropsHelper} />
+                                  )}
+                                  {subKey.input === 'checkbox-switch' && (
+                                    <InputCheckBoxSwitch
+                                      {...inputPropsHelper}
+                                    />
+                                  )}
+                                  {subKey.input === 'checkbox' && (
+                                    <InputCheckBox {...inputPropsHelper} />
+                                  )}
+                                  {subKey.input === 'color-picker' && (
+                                    <InputColorPicker {...inputPropsHelper} />
+                                  )}
+                                  {subKey.input === 'text' && (
+                                    <InputText {...inputPropsHelper} />
+                                  )}
+                                  {subKey.input === 'text-rich' && (
+                                    <InputTextRich {...inputPropsHelper} />
+                                  )}
+                                </td>
+                              </tr>
+                            )
+                          })}
+                        </tbody>
+                      </table>
+                    )
+                  })}
+                </div>
+              )
+            }
           </Fragment>
         )
       })}
