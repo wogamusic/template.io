@@ -15,7 +15,7 @@
 <ctrl><name>Edit VST</name><stat>176</stat><chan>3</chan><addr>12</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Video Follows Edit</name><stat>176</stat><chan>3</chan><addr>13</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Show All Tracks With Data Between Locators</name><stat>176</stat><chan>3</chan><addr>14</addr><max>127</max><flags>1</flags></ctrl>
-<ctrl><name>Show All Tracks In Selected Folder</name><stat>176</stat><chan>3</chan><addr>15</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Show All Non-Device Tracks In Selected Folder</name><stat>176</stat><chan>3</chan><addr>15</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>show BIG DRUMS</name><stat>176</stat><chan>3</chan><addr>16</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>show BSNS</name><stat>176</stat><chan>3</chan><addr>17</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>show CLS</name><stat>176</stat><chan>3</chan><addr>18</addr><max>127</max><flags>1</flags></ctrl>
@@ -125,7 +125,7 @@
 <entry ctrl="Show All Tracks With Data Between Locators">
 <command><category>Channel &amp; Track Visibility</category><action>ShowCycle</action><flags>1</flags></command>
 </entry>
-<entry ctrl="Show All Tracks In Selected Folder">
+<entry ctrl="Show All Non-Device Tracks In Selected Folder">
 <command><category>Process Project Logical Editor</category><action>Show All Tracks in Selected Folder</action><flags>1</flags></command>
 </entry>
 <entry ctrl="show BIG DRUMS">
@@ -288,7 +288,7 @@
 <command><category>Process Project Logical Editor</category><action>Show INPUTS</action><flags>1</flags></command>
 </entry>
 <entry ctrl="Show All Automation (toggle used only)">
-<command><category>Automation</category><action>Show All - Used Only</action><flags>1</flags></command>
+<command><category>Automation</category><action>Show All Used Automation</action><flags>1</flags></command>
 </entry>
 <entry ctrl="Show All Sends Automation">
 <command><category>Automation</category><action>Show All Send Automation</action><flags>1</flags></command>
