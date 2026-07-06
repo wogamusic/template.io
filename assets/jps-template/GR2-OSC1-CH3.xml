@@ -34,7 +34,7 @@
 <ctrl><name>In-Place Editor</name><stat>176</stat><chan>2</chan><addr>31</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Open Lower Mixer</name><stat>176</stat><chan>2</chan><addr>32</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>CC58 Spread Articulations</name><stat>176</stat><chan>2</chan><addr>33</addr><max>127</max><flags>1</flags></ctrl>
-<ctrl><name>CC58 Spread Articulations</name><stat>176</stat><chan>2</chan><addr>33</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>EMPTY</name><stat>176</stat><chan>2</chan><addr>34</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Quantize Lengths</name><stat>176</stat><chan>2</chan><addr>35</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Quantize Ends</name><stat>176</stat><chan>2</chan><addr>36</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Delete Overlaps (Poly)</name><stat>176</stat><chan>2</chan><addr>37</addr><max>127</max><flags>1</flags></ctrl>
@@ -168,7 +168,7 @@
 <command><category>MIDI</category><action>Delete Overlaps (poly)</action><flags>1</flags></command>
 </entry>
 <entry ctrl="Show 64,67,Vel">
-<command><category>MIDI</category><action>Controller Lane Setup 10</action><flags>1</flags></command>
+<command><category>MIDI</category><action>Controller Lane Setup 3</action><flags>1</flags></command>
 </entry>
 <entry ctrl="Vel &lt; 65 Nudge 200ms">
 <command><category>Process Logical Preset</category><action>Vel Under 65, nudge 200ms</action><flags>1</flags></command>
