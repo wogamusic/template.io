@@ -81,6 +81,12 @@
 <ctrl><name>Toggle Regions</name><stat>176</stat><chan>3</chan><addr>78</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Toggle Transport Zone</name><stat>176</stat><chan>3</chan><addr>79</addr><max>127</max><flags>1</flags></ctrl>
 <ctrl><name>Render Audio Click Between Locators</name><stat>176</stat><chan>3</chan><addr>80</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 120-100-100</name><stat>176</stat><chan>3</chan><addr>81</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 85-95-90</name><stat>176</stat><chan>3</chan><addr>82</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 50-85-85</name><stat>176</stat><chan>3</chan><addr>83</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 30-70-75</name><stat>176</stat><chan>3</chan><addr>84</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 300-45-55</name><stat>176</stat><chan>3</chan><addr>85</addr><max>127</max><flags>1</flags></ctrl>
+<ctrl><name>Set Selected to 0-0-15</name><stat>176</stat><chan>3</chan><addr>86</addr><max>127</max><flags>1</flags></ctrl>
 </ctrltable>
 <bank name="GR3-OSC1-CH4">
 <entry ctrl="Toggle Event Names">
@@ -322,6 +328,24 @@
 </entry>
 <entry ctrl="Render Audio Click Between Locators">
 <command><category>Edit</category><action>Create Audio Click Track</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 120-100-100">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 120-100-100</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 85-95-90">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 85-95-90</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 50-85-85">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 50-85-85</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 30-70-75">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 30-70-75</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 300-45-55">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 300-45-55</action><flags>1</flags></command>
+</entry>
+<entry ctrl="Set Selected to 0-0-15">
+<command><category>Process Project Logical Editor</category><action>Set Selected to 0-0-15</action><flags>1</flags></command>
 </entry>
 </bank>
 </remotedescription>
